@@ -8,7 +8,7 @@ Its basic unit is group, which is named by capture time and contains 8 expoure-t
 
 e.g.
 
-
+![alt text](structure.bmp "structure")
 
 
 ##Capture program
