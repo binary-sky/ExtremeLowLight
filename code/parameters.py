@@ -5,7 +5,7 @@ ps = 512        #patch size
 epoch_togo = 1000
 auto_batch_size = 1
 show = True
-path_father = "D:/datasets/"
+path_father = "./CID train set/"
 
 
 

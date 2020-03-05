@@ -8,7 +8,6 @@ import helper as hp
 import tensorflow as tf
 import numpy as np
 import scipy.misc as sm
-import buff
 import showoff as so
 import file_list as fl
 
@@ -151,7 +150,7 @@ def _readYfX(Y_path,X_path):
             Y_img=cv2.cvtColor(Y_img, cv2.COLOR_RGB2BGR)
             Y_img = Y_img * 255   #float 0~255
             cv2.imwrite(file_path,Y_img)
-            print("cv2 imwrite complete")
+            print("making cache: cv2 imwrite complete")
             Y_img=cv2.cvtColor(Y_img, cv2.COLOR_BGR2RGB)
         else:
             Y_img = cv2.imread(file_path)  #uint8 0~255
@@ -161,42 +160,7 @@ def _readYfX(Y_path,X_path):
     else:
         return np.zeros((2*pa.ps,2*pa.ps,3),dtype=np.float32)
 
-def _readYfX_withfusion(Y_path,X_path):
 
-    file_path =  autostr(X_path)    +'.fusion'+'.jpg'
-
-    if not pa.testing_now:
-
-        if not os.path.exists(file_path):
-            Y_raw = rawpy.imread(Y_path)
-            Y_img = Y_raw.postprocess(
-                use_camera_wb=True, half_size=False, no_auto_bright=True, output_bps=16).astype(np.float32)/65535.0
-            X_raw = rawpy.imread(X_path)
-            X_img = X_raw.postprocess(
-                use_camera_wb=True, half_size=False, no_auto_bright=True, output_bps=16).astype(np.float32)/65535.0
-        
-            X_img=cv2.cvtColor(X_img, cv2.COLOR_RGB2BGR)
-            Y_img=cv2.cvtColor(Y_img, cv2.COLOR_RGB2BGR)
-    
-            images = []
-            images.append(X_img*255.0)
-            images.append(Y_img*255.0)
-            print('Merging using Exposure Fusion...')
-            mergeMertens = cv2.createMergeMertens()
-            exposureFusion = mergeMertens.process(images)
-            print("fusion complete,saving file:",)
-            exposureFusion = exposureFusion * 255   #float 0~255
-            cv2.imwrite(file_path,exposureFusion)
-            print("cv2 imwrite complete")
-        else:
-            exposureFusion = cv2.imread(file_path)  #uint8 0~255
-    
-        exposureFusion=cv2.cvtColor(exposureFusion, cv2.COLOR_BGR2RGB)
-        return exposureFusion
-    else:
-        return np.zeros((2*pa.ps,2*pa.ps,3),dtype=np.float32)
-
-    
 def get_buff_loc(X):
     X=autostr(X)
     return str(pa.dataset_buff_loc + os.path.split(X)[1] + ".npz")

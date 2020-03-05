@@ -1,5 +1,5 @@
 ﻿#-*- coding:utf-8 -*-
-#conda install opencv scipy pillow matplotlib tensorflow-gpu==1.12 
+
 import tensorflow as tf
 import scipy.io as iox
 import numpy as np
@@ -68,27 +68,17 @@ with tf.Session()  as sess:
     ckpt = tf.train.get_checkpoint_state(checkpoint_dir)
 
 
-    if ckpt:
+    if ckpt:    # pick up from where it quit
         print('loaded ' + ckpt.model_checkpoint_path)
         saver.restore(sess, ckpt.model_checkpoint_path)
-    else:
+    else:       # first time to run
         hp.update_epoch(0)
         epoch_pickup = 0
 
-        variables_to_restore =  tf.contrib.framework.get_variables_to_restore(include=['brightness_predict_net'])
-        # var__  = [var_ for var_ in variables_to_restore if 'd_' in var.name]
-        saver_temp = tf.train.Saver(variables_to_restore)
-        ckpt2 = tf.train.get_checkpoint_state('./checkpoint/bpn/')
-        saver_temp.restore(sess, ckpt2.model_checkpoint_path)
-
-
         variables_to_restore =  tf.contrib.framework.get_variables_to_restore(include=['prefix_net','quality_pri_net'])
-        # var__  = [var_ for var_ in variables_to_restore if 'd_' in var.name]
         saver_temp = tf.train.Saver(variables_to_restore)
-        ckpt2 = tf.train.get_checkpoint_state('./checkpoint/pre/')
+        ckpt2 = tf.train.get_checkpoint_state('./checkpoint/ESN_only/')
         saver_temp.restore(sess, ckpt2.model_checkpoint_path)
-
-
 
         printc('partial parameter loaded\n','green')
         saver.save(sess, checkpoint_dir + 'model.ckpt')
