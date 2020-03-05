@@ -1,0 +1,10 @@
+Tensorflow version 1.13.*
+
+To Train New Model:
+    alter path_father = "D:/datasets/" in parameters.py
+    run train_step1.py
+    run train_step2.py
+
+To Test Model:
+    alter dir_father = 'F:/test set burst - 1/' in testWhole.py
+    run testWhole.py
