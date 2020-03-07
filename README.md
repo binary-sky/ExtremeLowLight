@@ -36,5 +36,5 @@ OneDrive : ......... to be uploaded ..........
 
 Baidu Disk (temporary) : LINK：https://pan.baidu.com/s/1M8w4302hwzM0y84S1z3Lrg Code：gr99
 
-OneDrive : ......... to be uploaded ..........
+OneDrive : https://stuhiteducn-my.sharepoint.com/:u:/g/personal/1150700117_stu_hit_edu_cn/Edor2A427PtElKU6Y0ewvysBv0t3k0UM43mE2xxDFGenlQ?e=VqEyhG
 
