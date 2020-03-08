@@ -1,4 +1,4 @@
-import tensorflow.contrib.slim as slim
+﻿import tensorflow.contrib.slim as slim
 import matplotlib.pyplot as plt
 import tensorflow as tf
 import scipy.io as iox
@@ -21,30 +21,17 @@ pa.testing_now = True
 pa.buff = False
 pa.ps = 512+256  # mean nothing,just to avoid assertion code
 
-print("using only CPU!!")
-os.environ["CUDA_DEVICE_ORDER"] = "PCI_BUS_ID"
-os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
-print("using only CPU!!")
 
 checkpointpath="./checkpoint/"
 
-# root = tk.Tk()
-# root.withdraw()
-# path_name = filedialog.askopenfilename()
-
+root = tk.Tk()
+root.withdraw()
+print('a file selection UI should pop up now, English path only, 不能有中文路径！ ~~')
+path_name = filedialog.askopenfilenames(filetypes=[('raw image', '.dng')])
 #collect raw image file to be enhanced
-dir_father = 'F:/rawnew4/'
-dir_children = hp.get_immediate_subdirectories(dir_father)
-dng_image_files = []
-for dir_child in dir_children:
-    if dir_child == 'TFRECORD':
-        continue
-    dng_image_files.extend(glob.glob(dir_father + dir_child + '/*.dng'))
 
 
-
-
-
+dng_image_files = path_name
 
 
 

@@ -6,7 +6,7 @@
 # env configuration:
 
 # conda install tensorflow=1.13.1 numpy opencv scipy pillow matplotlib   
-# pip install rawpy
+# pip install rawpy exifread
 
 
 
