@@ -27,9 +27,8 @@ Run on android platform, on some old device it seems that it has compatibility p
 
 Baidu Disk (temporary) : LINK：https://pan.baidu.com/s/146KH2Gpra4sODb8ijSFTOw Code：0xos
 
-OneDrive : ......... to be uploaded ..........
+OneDrive : https://stuhiteducn-my.sharepoint.com/:f:/g/personal/1150700117_stu_hit_edu_cn/EumyrYnHDMtIiNoAHNshbXUBHU5diRWyGVB1rmso860kog?e=KKEKOO
 
-......... to be uploaded..........
 
 # Pretrained Model Download
 
