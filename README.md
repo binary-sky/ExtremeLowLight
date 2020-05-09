@@ -12,9 +12,10 @@ e.g.
 
 
 ## Capture Program
-Run on android platform, on some old device it seems that it has compatibility problem.
+Run on android platform, on some old device it seems that it has compatibility problem, please build from source.
 
-.........program to be uploaded..........
+source: /dataset capture/*
+apk:    /dataset capture/Application/build/outputs/apk/debug/Application-debug.apk
 
 ## DATASET File Organization
 
