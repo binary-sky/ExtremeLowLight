@@ -14,6 +14,8 @@ import helper as hp
 from tensorflow.python.client import timeline
 import cal_weight as cw
 checkpoint_dir = "./checkpoint/"
+if not os.path.exists(checkpoint_dir):
+    os.makedirs(checkpoint_dir)
 logs_path = "./logs/"
 
 logging.basicConfig(filename='./LOG/train.log',format='[%(asctime)s-%(filename)s-%(levelname)s:%(message)s]', \

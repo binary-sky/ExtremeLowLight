@@ -27,6 +27,8 @@ from ssim import cal_ssim_loss
 from tensorflow.python import debug as tf_debug
 
 checkpoint_dir = "./checkpoint/ESN_only/"
+if not os.path.exists(checkpoint_dir):
+    os.makedirs(checkpoint_dir)
 logs_path = "./logs/"
 train_prefix = True
 train_u_net = True

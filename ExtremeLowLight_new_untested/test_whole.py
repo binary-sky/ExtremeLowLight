@@ -11,10 +11,11 @@ import mainNet as net
 import file_list as fl
 import parameters as pa
 import helper as hp
-import exifread 
+import exifread,os
 import input_channel as ic
 import tkinter as tk
 from tkinter import filedialog
+os.environ["CUDA_VISIBLE_DEVICES"]="-1"
 
 remove_bounder = False
 pa.testing_now = True
@@ -76,20 +77,22 @@ def get_result(img_path,classID,time,iso):
     iso     = np.expand_dims(iso, axis=0)       #from file's EXIF info
     time    = np.expand_dims(time, axis=0)      #from file's EXIF info
 
-    #execute
+    #execute print('A file selection UI should pop up now, English path only, 不能有中文路径！ ~~')
     y_hat = sess.run([Yhat_im_output_Graph],feed_dict={ 
         img_input_Graph:X_img,
         wb_graph:wb,
         inp_iso_Graph:iso,
         inp_t_Graph:time,
          })
-
+    savedir = './test_result/'
+    if not os.path.exists(savedir):
+        os.makedirs(savedir)
     #show and save
     output = np.minimum(np.maximum(y_hat[0], 0), 1)
     output = cv2.cvtColor(output[0,:,:,:], cv2.COLOR_RGB2BGR)
     print('note: there have to be a test_result1 folder!')
-    cv2.imwrite('./test_result1/'+os.path.basename(img_path)+'enhanced.jpg',output*255)
-    hp.printc('./test_result1/'+os.path.basename(img_path)+'enhanced.jpg\n','green')
+    cv2.imwrite(savedir + os.path.basename(img_path)+'enhanced.jpg',output*255)
+    hp.printc(savedir + os.path.basename(img_path)+'enhanced.jpg\n','green')
     cv2.namedWindow('OUT',cv2.WINDOW_NORMAL)
     cv2.imshow('OUT',output)
     cv2.waitKey(1000)
