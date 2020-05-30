@@ -15,7 +15,6 @@ import exifread,os
 import input_channel as ic
 import tkinter as tk
 from tkinter import filedialog
-os.environ["CUDA_VISIBLE_DEVICES"]="-1"
 
 remove_bounder = False
 pa.testing_now = True
